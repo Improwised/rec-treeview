@@ -1,0 +1,74 @@
+{
+  "recipes": [
+    {
+      "name": "Vegetarian Recipes",
+      "parent": [
+        {
+          "name": "Fruits",
+          "children": [
+            {
+              "name": "Dry Fruits",
+              "grandchildren": [
+                {
+                  "name": "Almond"
+                },
+                {
+                  "name": "Apricot"
+                },
+                {
+                  "name": "Cashewnuts"
+                },
+                {
+                  "name": "Dates"
+                },
+                {
+                  "name": "Walnuts"
+                },
+                {
+                  "name": "Peanuts"
+                },
+                {
+                  "name": "Pistachios"
+                }
+              ]
+            },
+            {
+              "name": "Fresh Fruits",
+              "grandchildren": [
+                {
+                  "name": "Apple"
+                },
+                {
+                  "name": "Banana"
+                },
+                {
+                  "name": "Orange"
+                },
+                {
+                  "name": "Mango"
+                },
+                {
+                  "name": "Grapes"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Soup",
+          "children": [
+            {
+              "name": "Tomato Soup"
+            },
+            {
+              "name": "Loaded Potato Soup"
+            },
+            {
+              "name": "French Onion Soup"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
