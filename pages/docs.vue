@@ -1,11 +1,13 @@
 <template>
 <div class="container">
 <div id="doc">
+  <div v-html="readme"></div>
   </div>
   </div>
 </template>
 
 <script>
+  import readme from '../README.md'
 
   export default {
     computed: {
