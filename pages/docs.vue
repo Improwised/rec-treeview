@@ -7,7 +7,7 @@
 </template>
 
 <script>
-  import readme from '../static/README.md'
+  import readme from './README.md'
 
   export default {
     computed: {
