@@ -4,7 +4,7 @@ This directory is a brief example of a Recursive Component that has be deployed 
 
 ## Demo
 
-_Live Example: https://rec-treeview-g39cz5bjm-rajbhojani77.vercel.app/_
+[here](https://rec-treeview.vercel.app/)
 
 ### How We Created This Example
 

@@ -1,3 +1,4 @@
+const path = require("path");
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: "static",
@@ -32,8 +33,7 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // Doc: https://bootstrap-vue.js.org
-    "bootstrap-vue/nuxt",
-    "@nuxtjs/markdownit",
+    "bootstrap-vue/nuxt"
   ],
 
   // [optional] markdownit options
@@ -44,5 +44,14 @@ export default {
     breaks: true,
   },
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+    extend(config, ctx) {
+      // add frontmatter-markdown-loader
+      config.module.rules.push({
+        test: /\.md$/,
+        include: path.resolve(__dirname, "content"),
+        loader: "frontmatter-markdown-loader"
+      });
+    }
+  },
 };
