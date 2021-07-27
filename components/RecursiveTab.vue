@@ -1,77 +1,39 @@
 <template>
   <div class="recursive-nested-collapse">
-    <b-button
-      v-b-toggle="componentID"
-      variant="primary"
-      class="d-flex align-items-center"
-      block
-    >
-      <span
-        ><b>{{ name }}</b></span
-      >
-    </b-button>
-
-    <!-- Rendered After Click -->
-    <b-collapse :id="componentID">
-      <div v-if="isNotLastPath()">
-        <recursive-tab
-          v-for="child in children"
-          :name="child.name"
-          :data="child"
-          :key="child.name"
-          :paths="childPaths"
-        />
+    <div v-for="recipe in recipes" :key="recipe.name">
+      <div v-if="recipe.name">
+        <b-button
+          pill
+          v-b-toggle="componentID(recipe.name)"
+          variant="outline-primary"
+          class="d-flex mt-2 align-items-center"
+          block
+        >
+          <span
+            ><b>{{ recipe.name }}</b></span
+          >
+        </b-button>
+        <b-collapse :id="componentID(recipe.name)">
+          <div v-if="recipe.children">
+            <recursive-tab :recipes="recipe.children" />
+          </div>
+        </b-collapse>
       </div>
-
-      <div v-else>
-        <div v-for="child in children">
-          <b-card>
-            <div
-              class="d-flex justify-content-between align-items-center flex-row flex-wrap"
-            >
-              <span>{{ child.name }}</span>
-            </div>
-          </b-card>
-        </div>
-      </div>
-    </b-collapse>
+    </div>
   </div>
 </template>
 
 <script>
-
 export default {
   name: "RecursiveTab",
   props: {
-    name: String,
-    data: Object,
-    paths: Array
-  },
-  data() {
-    return {
-      drawerIsSelected: false,
-    };
-  },
-  computed: {
-    pathItem() {
-      return ;
-    },
-    children() {
-      return this.data[this.paths[0]];
-    },
-    childPaths() {
-      return this.paths.slice(1);
-    },
-    componentID() {
-      let id = this.name.replace(/ /g,'')
-      return `${id}`;
-    }
+    recipes: Array,
   },
   methods: {
-    isNotLastPath() {
-      return this.paths.length > 1;
-    }
-  }
+    componentID(name) {
+      return name.replace(/ /g, "");
+    },
+  },
 };
 </script>
 
@@ -100,7 +62,7 @@ a {
 }
 
 .recursive-nested-collapse {
-  margin: 5px 15px 5px 15px;
+  margin: 5px 0px 0px 3rem;
 }
 
 .btn:hover,

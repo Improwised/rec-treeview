@@ -2,13 +2,13 @@
   "recipes": [
     {
       "name": "Vegetarian Recipes",
-      "parent": [
+      "children": [
         {
           "name": "Fruits",
           "children": [
             {
               "name": "Dry Fruits",
-              "grandchildren": [
+              "children": [
                 {
                   "name": "Almond"
                 },
@@ -34,7 +34,7 @@
             },
             {
               "name": "Fresh Fruits",
-              "grandchildren": [
+              "children": [
                 {
                   "name": "Apple"
                 },

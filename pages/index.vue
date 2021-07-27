@@ -1,29 +1,31 @@
 <template>
   <div class="container">
     <logo />
-    <h1>Recursive Component Example</h1>
-    <br />
-
-    <recursive-tab
-      v-for="recipe in recipes"
-      :name="recipe.name"
-      :data="recipe"
-      :key="recipe.name"
-      :paths="['parent', 'children', 'grandchildren']"
-    />
+    <h1 class="mb-5">Recursive Component Example</h1>
+    <b-row>
+      <b-col>
+        <v-jsoneditor
+          v-model="recipes"
+          :plus="false"
+          height="30rem"
+        />
+      </b-col>
+      <b-col>
+        <recursive-tab :name="recipes.name" :recipes="recipes" />
+      </b-col>
+    </b-row>
   </div>
 </template>
 
 <script>
-import RecursiveTab from "@/components/RecursiveTab";
 import json from "@/data/data.json";
 
 export default {
-  computed: {
-    recipes() {
-      return json.recipes;
-    }
-  }
+  data() {
+    return {
+      recipes: json.recipes
+    };
+  },
 };
 </script>
 
@@ -32,5 +34,6 @@ export default {
   text-align: center;
   color: #000306;
   margin-top: 60px;
+  margin-bottom: 80px;
 }
 </style>
