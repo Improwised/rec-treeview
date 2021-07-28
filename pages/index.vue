@@ -11,7 +11,7 @@
         />
       </b-col>
       <b-col>
-        <recursive-tab :name="recipes.name" :recipes="recipes" />
+        <recursive-tab :name="recipes.name" :start="start" :recipes="recipes" />
       </b-col>
     </b-row>
   </div>
@@ -23,7 +23,8 @@ import json from "@/data/data.json";
 export default {
   data() {
     return {
-      recipes: json.recipes
+      recipes: json.recipes,
+      start:true
     };
   },
 };

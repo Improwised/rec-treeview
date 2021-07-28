@@ -2,19 +2,22 @@
   <div class="recursive-nested-collapse">
     <div v-for="recipe in recipes" :key="recipe.name">
       <div v-if="recipe.name">
-        <b-button
-          pill
-          v-b-toggle="componentID(recipe.name)"
-          variant="outline-primary"
-          class="d-flex mt-2 align-items-center"
-          block
+        <span class="d-flex mt-2 align-items-center"
+          ><b v-if="!start" class="branch "></b
+          ><b-icon
+            :icon="close"
+            v-if="recipe.children"
+            v-b-toggle="componentID(recipe.name)"
+            variant="success"
+          ></b-icon>
+          <b>{{ recipe.name }}</b></span
         >
-          <span
-            ><b>{{ recipe.name }}</b></span
+        <b-collapse style="margin-left: 0.4rem;" :id="componentID(recipe.name)">
+          <div
+            style="border-left:rgb(59, 126, 185) solid;margin-top: -0.4rem;
+padding-top: 4px;"
+            v-if="recipe.children"
           >
-        </b-button>
-        <b-collapse :id="componentID(recipe.name)">
-          <div v-if="recipe.children">
             <recursive-tab :recipes="recipe.children" />
           </div>
         </b-collapse>
@@ -26,8 +29,15 @@
 <script>
 export default {
   name: "RecursiveTab",
+  data() {
+    return {
+      open: "dash-circle-fill",
+      close: "plus-circle-fill",
+    };
+  },
   props: {
-    recipes: Array,
+    recipes: { type: Array, default: {} },
+    start: { type: Boolean, default: false },
   },
   methods: {
     componentID(name) {
@@ -68,5 +78,15 @@ a {
 .btn:hover,
 button:hover {
   cursor: pointer;
+}
+.branch {
+  content: "";
+  display: block;
+  width: 3rem;
+  border-top: 3px solid rgb(59, 126, 185);
+  margin-top: -2px;
+  position: absolute;
+  margin-left: -3rem;
+  margin-top: -1px;
 }
 </style>
